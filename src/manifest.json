@@ -1,0 +1,18 @@
+
+{
+ "name": "Shophia",
+ "short_name": "Shophia",
+  "lang": "ru",
+ "start_url": ".",
+ "display": "standalone",
+ "background_color": "#333",
+ "description": "Лучший сайт модной одежды",
+ "icons": [
+  {
+   "src": "favicon.ico",
+   "sizes": "48x48",
+   "type": "image\/iso",
+   "density": "0.75"
+  }
+ ]
+}

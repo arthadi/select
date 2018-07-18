@@ -1,0 +1,9 @@
+{
+  "name": "bundle.loc",
+  "dependencies": {
+    "jquery": "3.3.1",
+    "photoswipe": "^4.1.2",
+    "svg4everybody": "^2.1.9",
+    "validate": "https://github.com/cferdinandi/validate.git#^2.2.0"
+  }
+}

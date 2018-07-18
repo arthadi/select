@@ -1,0 +1,120 @@
+.select-box {
+  width: 90px;
+  position: relative;
+  height: 35px;
+  background-color: @font_Color;
+  color: @background_Color;
+  transition: .3s;
+}
+.select-box .select-box__value-tag {
+  transition: .2s;
+  height: 35px;
+}
+
+.select-box__value-tag {
+  display: inline-block;
+  margin: 0 0 0 12px;
+  height: 100%;
+  cursor: default;
+  font-family:"Ubuntu-Light";
+  font-style:normal;
+  font-weight:400;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.select-box__value-tag::before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 100%;
+}
+
+.arrow-select-link {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  color: @background_Color;
+  justify-content: flex-end;
+}
+
+.arrow-select{
+   margin: auto;
+   width: 25px;
+   height: 100%;
+   position: absolute;
+   right: 0;
+}
+
+.arrow-select:after{
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border: 6px solid transparent;
+  border-top: 5px solid #ffffff;
+  top: 16px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.select-menu-box {
+  background: @background_Color;
+  transition: .3s;
+  width: 100%;
+  height: 0;
+  top: 35px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 10;
+}
+
+.option{
+  width: 100%;
+  height: auto;
+}
+
+.option-link {
+  display: block;
+  width: 100%;
+  padding: 10px 0 10px 16px;
+  cursor: pointer;
+  color: @select_font_Color;
+  background-color: @background_Color;
+  font-family:"Lato Bold";
+  font-style:normal;
+  font-weight:400;
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.option-link:link {
+  color: @select_font_Color;
+  background-color: @background_Color;
+}
+
+.option-link:visited {
+  color: @select_font_Color;
+  background-color: @background_Color;
+}
+
+.option-link:hover {
+  color: @font_Color;
+  background: @gold_Color;
+}
+
+.option-link:focus {
+  color: @select_font_Color;
+  background-color: @background_Color;
+}
+
+.option-link:active {
+  color: @select_font_Color;
+  background-color: @background_Color;
+}
