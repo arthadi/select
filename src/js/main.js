@@ -8,12 +8,15 @@ $(document).ready(function(){
         const $selectCont = $(this);
         const $select = $selectCont.children();
         const $selectOption = $select.children();
+        let dataOption = [];
         let textOption = [];
         let classMainBlockSelect = $selectCont.attr("class");
 
         $selectOption.each(function(){
             let text_option = $(this).text();
+            let data_option = $(this).val();
             textOption.push(text_option);
+            dataOption.push(data_option);
         });
 
         $("<div/>", {
@@ -25,6 +28,7 @@ $(document).ready(function(){
                 })
           }).add ($("<p>", {
                 "class": classMainBlockSelect + "_" + "select-box__value-tag" + " " + "select-box__value-tag",
+                "data-value": "",
                 text: textOption[0]
             })).add($("<ul>", {
                 "class": classMainBlockSelect + "_" + "select-menu-box" + " " + "select-menu-box"
@@ -37,7 +41,8 @@ $(document).ready(function(){
                 append: $("<a>",{
                     "class": classMainBlockSelect + "_" + "option-link" + " " + "option-link link",
                     "href": "#",
-                    "text": textOption[i]
+                    "text": textOption[i],
+                    "data-value": dataOption[i],
                 })
             }).appendTo($("." + classMainBlockSelect + "_" + "select-menu-box"));
         }
@@ -48,37 +53,38 @@ $(document).ready(function(){
 
         $arrow_select.on("click", (e) => {
             const parentBox = e.target.parentElement;
-            const $selectMenuBox = parentBox.childNodes[2];
-            const classSelectMenuBox = $selectMenuBox.classList[0];
+            const classSelectMenuBox = parentBox.childNodes[2].classList[0];
             const $MenuBox = $("." + classSelectMenuBox);
             const classArrow = e.target.children[0].classList[0];
+            const $ButtonArrow = $("." + classArrow);
             let thisCurentHeight = parseInt($MenuBox.css("height"));
 
             if (thisCurentHeight === 0) {
                 let height_menu = $MenuBox.css({"height":"auto"}).outerHeight();
                 $MenuBox.css ({"height":"0"});
                 $MenuBox.animate({"height": height_menu}, 300);
-                $("." + classArrow).css({transition: ".2s", transform: "rotate(180deg)"});
+                $ButtonArrow.css({transition: ".2s", transform: "rotate(180deg)"});
                 return false;
             }
             else {
                 $MenuBox.animate ({"height": 0}, 300);
-                $("." + classArrow).css({transition: ".2s", transform: "rotate(0deg)"});
+                $ButtonArrow.css({transition: ".2s", transform: "rotate(0deg)"});
                 return false;
             }
         });
 
         $option.click ((e) => {
             const $mainBox = e.target.offsetParent.parentElement;
-            const $ulClass = e.target.offsetParent.classList[0];
+            const $data = e.target.dataset.value;
             const $text = e.target.text;
-            const $classP = $mainBox.children[1].classList[0];
-            const $classArrowBox = $mainBox.children[0].children[0].classList[0];
+            const $ul = $("." + e.target.offsetParent.classList[0]);
+            const $p = $("." + $mainBox.children[1].classList[0]);
+            const $arrowBox = $("." + $mainBox.children[0].children[0].classList[0]);
 
             e.preventDefault();
-            $("." + $ulClass).animate({"height": 0}, 300);
-            $("." + $classP).text($text);
-            $("." + $classArrowBox).css({transition: ".2s", transform: "rotate(0deg)"});
+            $ul.animate({"height": 0}, 300);
+            $p.text($text).attr("data-value", $data);
+            $arrowBox.css({transition: ".2s", transform: "rotate(0deg)"});
         });
     });
 };
